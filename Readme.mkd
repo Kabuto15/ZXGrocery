@@ -1,0 +1,37 @@
+
+# ZX GROCERY v 1.0
+
+Simple game to celebrate 40 years of **ZX Spectrum**. 
+
+ZX Spectrum a 8-bit personal computer was released in UK in 1982 (16k/48k RAM versions) and became one of the best selling microcomputers.
+The great success of this device is also the fact that it is used by fans till today.
+
+A *ZX Grocery* game is dedicated to children with an aim to practice simple math addition operation. Goal is to sell products calculating the total amount of all of the products.
+Game was developed for and tested on 48k RAM version of ZX Spectrum.
+
+
+## Code / Libraries
+Game was written in C using Z88DK SDK + toolchain. It uses simple graphic and sound operations.
+More information about SDK [https://github.com/z88dk/z88dk](URL)
+Repository also contains supporting tools (image converters, tape generators etc).
+
+
+## Compilation
+Compilation command which includes also adding of a startup splash screen:
+
+`zcc +zx -vn -O3 -m -startup=31 -clib=new src/*.c src/resources/*.asm -o zxgrocv1 -create-app -Cz--screen=tools/zxgrocery_loading.scr -Cz--sZxGrocery`
+
+## Emulation / Target Machine
+**Emulation:** Use **Speccy** or **Fuse** emulator to load **.tap** file (so easy).
+
+**Tap to Wav conversion:** Use **tapir** or other available **tap->wav** converters.
+
+**Target Machine:** Use mobile phone with dedicated app to play *.tap* file or use *.wav* player to transmit the audio to ZX Machine (remember to enter `LOAD ""` basic command on the machine). Alternatively, you can also record *.wav* file into cassette tape and to play audio from cassette player / recorder.
+
+![Screenshot](https://github.com/Kabuto15/ZXGrocery/blob/main/images/zxgrocery_gamescreen2.png)
+
+![Screenshot](https://github.com/Kabuto15/ZXGrocery/blob/main/images/zxgrocery_gamescreen1.png)
+
+
+## License
+The MIT License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
