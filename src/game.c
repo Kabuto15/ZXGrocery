@@ -37,7 +37,7 @@ const uint8_t gameLevelCustomersNo[GAME_LEVELS] = {
 };
 
 const uint8_t gameLevelCustomersAppearance[GAME_LEVELS] = {
-    8,6,4,3,2
+    6,5,4,3,2
 };
 
 const uint8_t gameLevelDistributorPriceChange[GAME_LEVELS] = {
@@ -144,7 +144,7 @@ void gameScreenLoop(uint16_t rndSeed) {
         {
             animatedSprite->frame = (void*)animation_offset;
             sp1_MoveSprPix(animatedSprite, &fullScreenDef, 0, animation_x++, 160);
-            if (0 == uiCustomerGameTick % 3) bit_beep(10, 300);
+            if (0 == uiCustomerGameTick % 3) bit_beep(10, 500);
             animation_offset+=16;
             if( animation_offset == 128 )
                 animation_offset = 0;
@@ -388,7 +388,7 @@ enum GAME_EXIT_STATE applyGroceryPenalty(uint8_t uiPenalty)
         displayText(fullScreenDef, "\x14\xCE GAME OVER !!!", 9, 11); 
         displayText(fullScreenDef, "\x14\xCE NO FUNDS ", 11, 12);   
         sp1_UpdateNow();
-        bit_beep(500, 50);
+        bit_beep(500, 400);
         in_wait_key();
         return GAME_OVER;
     }
@@ -412,7 +412,7 @@ static void buyFromDistributor(uint8_t itemPos)
         /* not enough funds */
         displayText(fullScreenDef, "\x14\xCENot enough funds", 15, 21);
         sp1_UpdateNow();
-        bit_beep(200, 50);
+        bit_beep(200, 400);
         z80_delay_ms(1500);
         displayText(fullScreenDef, "\x14\x38                ", 15, 21);
     }
@@ -426,7 +426,7 @@ static void displayNewShoperRequest(void)
     uint8_t productTypeIndex;
 
     displayText(fullScreenDef, "\x14\xCEShoper buying", 18, 16);
-    bit_beep(10, 500);
+    bit_beep(10, 800);
     sp1_UpdateNow();
     z80_delay_ms(DELAY_LONG);
     for(productCnt=0; productCnt<newShoperNoOfProducts; productCnt++)
@@ -435,10 +435,10 @@ static void displayNewShoperRequest(void)
         sprintf(textBuffer, "\x14\x38-%dkg/ %s", newShoperProductsAmount[productCnt], goodsNames[productTypeIndex]);
         displayText(fullScreenDef, textBuffer, 18, 17+productCnt);
         sp1_UpdateNow();
-        bit_beep(10, 500);
+        bit_beep(10, 1100);
         z80_delay_ms(DELAY_LONG);
     }
-    bit_beep(10, 500);
+    bit_beep(10, 900);
     sp1_UpdateNow();
  
 }
@@ -471,8 +471,8 @@ static enum GAME_EXIT_STATE  finalizeNewShoperRequest(void)
         displayText(fullScreenDef, "\x14\xCE YOU WIN!!!", 13, 12); 
         displayText(fullScreenDef, "\x14\xCE CONGRATS  ", 13, 13);   
         sp1_UpdateNow();
-        bit_beep(50, 500);
-        bit_beep(100, 700);
+        bit_beep(50, 1100);
+        bit_beep(100, 800);
         in_wait_key();
         return GAME_OVER;
     }
@@ -514,7 +514,7 @@ static uint8_t newShoperGiveBillNumber(void)
             {
                 enteredNumber = (enteredNumber - enteredNumber % 10)/10;       
             }
-            bit_beep(50, 100);
+            bit_beep(50, 600);
             z80_delay_ms(250);   
         }
         else if (digitPos<2)
@@ -522,52 +522,52 @@ static uint8_t newShoperGiveBillNumber(void)
             if (in_key_pressed(IN_KEY_SCANCODE_0)) {
                 enteredNumber = enteredNumber * digitPos * 10 + 0;
                 digitPos++;
-                bit_beep(50, 400);
+                bit_beep(50, 800);
                 z80_delay_ms(250);
             } else if (in_key_pressed(IN_KEY_SCANCODE_1)) {
                 enteredNumber = enteredNumber * digitPos * 10 + 1;
                 digitPos++;
-                bit_beep(50, 400);
+                bit_beep(50, 800);
                 z80_delay_ms(250);
             } else if (in_key_pressed(IN_KEY_SCANCODE_2)) {
                 enteredNumber = enteredNumber * digitPos * 10 + 2;
                 digitPos++;
-                bit_beep(50, 400);
+                bit_beep(50, 800);
                 z80_delay_ms(250);
             } else if (in_key_pressed(IN_KEY_SCANCODE_3)) {
                 enteredNumber = enteredNumber * digitPos * 10 + 3;
                 digitPos++;
-                bit_beep(50, 400);
+                bit_beep(50, 800);
                 z80_delay_ms(250);
             } else if (in_key_pressed(IN_KEY_SCANCODE_4)) {
                 enteredNumber = enteredNumber * digitPos * 10 + 4;
                 digitPos++;
-                bit_beep(50, 400);
+                bit_beep(50, 800);
                 z80_delay_ms(250);
             } else if (in_key_pressed(IN_KEY_SCANCODE_5)) {
                 enteredNumber = enteredNumber * digitPos * 10 + 5;
                 digitPos++;
-                bit_beep(50, 400);
+                bit_beep(50, 800);
                 z80_delay_ms(250);
             } else if (in_key_pressed(IN_KEY_SCANCODE_6)) {
                 enteredNumber = enteredNumber * digitPos * 10 + 6;
                 digitPos++;
-                bit_beep(50, 400);
+                bit_beep(50, 800);
                 z80_delay_ms(250);
             } else if (in_key_pressed(IN_KEY_SCANCODE_7)) {
                 enteredNumber = enteredNumber * digitPos * 10 + 7;
                 digitPos++;
-                bit_beep(50, 400);
+                bit_beep(50, 800);
                 z80_delay_ms(250);
             } else if (in_key_pressed(IN_KEY_SCANCODE_8)) {
                 enteredNumber = enteredNumber * digitPos * 10 + 8;
                 digitPos++;
-                bit_beep(50, 400);
+                bit_beep(50, 800);
                 z80_delay_ms(250);
             } else if (in_key_pressed(IN_KEY_SCANCODE_9)) {
                 enteredNumber = enteredNumber * digitPos * 10 + 9;
                 digitPos++;
-                bit_beep(50, 400);
+                bit_beep(50, 800);
                 z80_delay_ms(250);
             } 
         }
@@ -581,7 +581,7 @@ static uint8_t newShoperGiveBillNumber(void)
         sp1_UpdateNow();
         z80_delay_ms(25);
     }
-    bit_beep(30, 50);
+    bit_beep(30, 600);
     z80_delay_ms(50);
     return enteredNumber;
 }
@@ -699,7 +699,7 @@ void playNegative(void)
     for (i=0; i<3; i++)
     {
         bit_beep(80, 400 - i*50);
-        bit_beep(150, 100);
+        bit_beep(150, 400);
     }
-    bit_beep(100, 50);
+    bit_beep(100, 300);
 }
