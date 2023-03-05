@@ -453,14 +453,14 @@ static enum GAME_EXIT_STATE  finalizeNewShoperRequest(void)
     {
         if (newShoperProductsAmount[productCnt] <= groceryShopPlayer.currentInventory[newShoperProductsType[productCnt]] )
         {
-            groceryShopPlayer.currentInventory[newShoperProductsType[productCnt]] -= newShoperProductsAmount[productCnt];
             gameStatus.currentFunds += groceryShopPlayer.currentPrice[newShoperProductsType[productCnt]] * newShoperProductsAmount[productCnt];
+            groceryShopPlayer.currentInventory[newShoperProductsType[productCnt]] -= newShoperProductsAmount[productCnt];
         }
         else
         {
-            groceryShopPlayer.currentInventory[newShoperProductsType[productCnt]] = 0;  
             gameStatus.currentFunds += groceryShopPlayer.currentPrice[newShoperProductsType[productCnt]] \
                                         * groceryShopPlayer.currentInventory[newShoperProductsType[productCnt]]; 
+            groceryShopPlayer.currentInventory[newShoperProductsType[productCnt]] = 0;  
         } 
     }
 
