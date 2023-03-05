@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "engine.h": "c",
+        "statecontrollers.h": "c",
+        "game.h": "c",
+        "malloc.h": "c",
+        "main.h": "c",
+        "interceptor2020logo.h": "c",
+        "gui_funcs.h": "c",
+        "graphics_raw_data.h": "c"
+    }
+}
